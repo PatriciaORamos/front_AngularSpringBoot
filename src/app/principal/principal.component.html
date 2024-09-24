@@ -1,0 +1,36 @@
+<form>
+    <img src="assets/customer.png">
+
+    <input type="text"   placeholder="Name"   class="form-control" name="name" [(ngModel)]="customer.name">
+    <input type="number" placeholder="Age"    class="form-control" name="age"  [(ngModel)]="customer.age">
+    <input type="text"   placeholder="City"   class="form-control" name="city" [(ngModel)]="customer.city">
+
+    <input type="button" value="Add"    *ngIf="btnAdd"   class="btn btn-primary"    (click)="add()">
+    <input type="button" value="Update" *ngIf="!btnAdd"  class="btn btn-warning"    (click)="edit()">
+    <input type="button" value="Delete" *ngIf="!btnAdd"  class="btn btn-danger"     (click)="remove()">
+    <input type="button" value="Cancel" *ngIf="!btnAdd"  class="btn btn-secondary"  (click)="cancel()">
+</form>
+
+<!--test object customer <h1>{{customer | json}}</h1> -->
+
+
+<table class="table" *ngIf="table">
+  <thead>
+      <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>City</th>
+          <th>Select</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of customers; index as i">
+      <td>{{i+1}}</td>
+      <td>{{c.name}}</td>
+      <td>{{c.age}}</td>
+      <td>{{c.city}}</td>
+      <td><button class="btn btn-success" (click)="selectCustomer(i)">Selecionar</button></td>
+    </tr>
+  </tbody>
+</table>
